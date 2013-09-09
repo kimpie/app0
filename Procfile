@@ -1,1 +1,1 @@
-web: node webtest.js
+web: node websignup.js
