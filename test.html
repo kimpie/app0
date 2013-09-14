@@ -13,6 +13,10 @@
     <link href="http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,300,400,600,700,800" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Just+Another+Hand' rel='stylesheet' type='text/css'>
+    
+    <!-- TokBox Start -->
+    <script src='https://swww.tokbox.com/webrtc/v2.0/js/TB.min.js'></script>
+    <!-- TokBox End -->
 
     <!-- Datepicker css and jquery -->
     <link rel="stylesheet" type="text/css" href="css/datepicker.css">
@@ -355,6 +359,25 @@ padding:0;
 	  <div class="span12">
 	    <p class="lead"> Your place to learn, do and share DIY projects through video chat.</p>
 	    </div>
+        <div id="myPublisherDiv"></div>
+        <script type="text/javascript">
+          // Initialize API key, session, and token...
+          // Think of a session as a room, and a token as the key to get in to the room
+          // Sessions and tokens are generated on your server and passed down to the client
+          var apiKey = "34722492";
+          var sessionId = "2_MX4zNDcyMjQ5Mn4xMjcuMC4wLjF-RnJpIFNlcCAxMyAyMDoxMDo0OSBQRFQgMjAxM34wLjgzNzI0MTM1fg";
+          var token = "T1==cGFydG5lcl9pZD0zNDcyMjQ5MiZzZGtfdmVyc2lvbj10YnJ1YnktdGJyYi12MC45MS4yMDExLTAyLTE3JnNpZz1kZTUyYjAwOWUzMTlhNjkxNzk5OWQ5MWM2N2VhM2U3N2RhNWI2YWM2OnJvbGU9cHVibGlzaGVyJnNlc3Npb25faWQ9Ml9NWDR6TkRjeU1qUTVNbjR4TWpjdU1DNHdMakYtUm5KcElGTmxjQ0F4TXlBeU1Eb3hNRG8wT1NCUVJGUWdNakF4TTM0d0xqZ3pOekkwTVRNMWZnJmNyZWF0ZV90aW1lPTEzNzkxMjgyNDkmbm9uY2U9MC4xMDQ4ODY2MTYwNjQwMjIxNiZleHBpcmVfdGltZT0xMzc5MjE0NjQ0JmNvbm5lY3Rpb25fZGF0YT0=";
+
+          // Initialize session, set up event listeners, and connect
+          var session = TB.initSession(sessionId);
+          session.addEventListener('sessionConnected', sessionConnectedHandler);
+          session.connect(apiKey, token);
+          
+          function sessionConnectedHandler(event) {
+            var publisher = TB.initPublisher(apiKey, 'myPublisherDiv');
+            session.publish(publisher);
+          }
+        </script>
 	  </div>
 	</div>
 	</div>
